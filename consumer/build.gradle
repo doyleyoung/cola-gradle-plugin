@@ -1,0 +1,59 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.7
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
+    }
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+
+    dependencies {
+        classpath group: 'com.github.bmsantos', name: 'cola-tests', version: '0.0.3-SNAPSHOT'
+        classpath group: 'com.github.bmsantos', name: 'cola-gradle-plugin', version: '0.0.3-SNAPSHOT'
+    }
+}
+
+apply plugin: 'maven'
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'commons-collections:commons-collections:3.2'
+    testCompile 'org.slf4j:slf4j-simple:1.7.7'
+    testCompile 'com.github.bmsantos:cola-tests:0.0.3-SNAPSHOT'
+    testCompile 'junit:junit:4.+'
+}
+
+apply plugin: 'cola'
+cola {
+    ideBaseClass = 'org.gradle.cola.tests.TestBase'
+    ideBaseClassTest = 'toBeRemoved'
+    targetDirectory = compileTestJava.destinationDir
+    includes = ['org/gradle/cola/tests/**'] 
+    excludes = ['something/else/**', 'and/some/CompiledFile.class']
+}
+colac.dependsOn testClasses
+colac.mustRunAfter testClasses
+
+test {
+    useJUnit()
+    systemProperties 'property': 'value'
+    dependsOn colac
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
