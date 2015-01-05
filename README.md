@@ -4,7 +4,11 @@ COLA Tests Gradle Plugin
 ## Build
 
 ```shell
+cd cola-plugin
 gradle clean build uploadArchives
+cd ..
+cd consumer
+gradle clean test -i 
 ```
 
 ## Usage
