@@ -2,9 +2,9 @@ package com.github.bmsantos.gradle.cola.provider
 
 import org.junit.Before
 import org.junit.Test
-import static com.github.bmsantos.maven.cola.utils.ColaUtils.CLASS_EXT
-import static com.github.bmsantos.maven.cola.utils.ColaUtils.binaryToOsClass
-import static com.github.bmsantos.maven.cola.utils.ColaUtils.toOSPath
+import static com.github.bmsantos.core.cola.utils.ColaUtils.CLASS_EXT
+import static com.github.bmsantos.core.cola.utils.ColaUtils.binaryToOsClass
+import static com.github.bmsantos.core.cola.utils.ColaUtils.toOSPath
 import static java.lang.System.getProperties;
 import static org.junit.Assert.assertThat
 import static org.hamcrest.CoreMatchers.*

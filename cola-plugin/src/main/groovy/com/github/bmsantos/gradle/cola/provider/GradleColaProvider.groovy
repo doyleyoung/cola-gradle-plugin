@@ -1,9 +1,8 @@
 package com.github.bmsantos.gradle.cola.provider
 
-import com.github.bmsantos.maven.cola.provider.IColaProvider
-import static com.github.bmsantos.maven.cola.utils.ColaUtils.isSet
-
-import static com.github.bmsantos.maven.cola.utils.ColaUtils.CLASS_EXT
+import com.github.bmsantos.core.cola.provider.IColaProvider
+import static com.github.bmsantos.core.cola.utils.ColaUtils.isSet
+import static com.github.bmsantos.core.cola.utils.ColaUtils.CLASS_EXT
 import static java.io.File.separator
 import static java.lang.System.getProperties
 import static java.util.Arrays.asList

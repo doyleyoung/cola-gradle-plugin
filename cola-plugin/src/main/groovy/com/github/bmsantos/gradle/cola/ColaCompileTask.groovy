@@ -7,7 +7,7 @@ import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.artifacts.ProjectDependency
 
-import com.github.bmsantos.maven.cola.main.ColaMain
+import com.github.bmsantos.core.cola.main.ColaMain
 
 class ColaCompileTask extends DefaultTask {
 
