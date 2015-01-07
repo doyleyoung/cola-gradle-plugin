@@ -11,10 +11,6 @@ repositories {
     mavenCentral()
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.3.6'
-}
-
 dependencies {
     compile gradleApi()
     compile localGroovy()
@@ -36,4 +32,8 @@ uploadArchives {
     repositories {
         mavenLocal()
     }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2.1'
 }
