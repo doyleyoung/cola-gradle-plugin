@@ -2,6 +2,7 @@ import org.apache.tools.ant.filters.*
 
 apply plugin: 'groovy'
 apply plugin: 'maven'
+apply plugin: 'signing'
 
 group = 'com.github.bmsantos'
 version = '0.0.3-SNAPSHOT'
@@ -18,7 +19,6 @@ dependencies {
     compile 'com.github.bmsantos:cola-tests:0.0.3-SNAPSHOT'
     testCompile 'junit:junit:4.11'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
-    
 }
 
 processResources {
@@ -31,9 +31,72 @@ processResources {
 uploadArchives {
     repositories {
         mavenLocal()
+        mavenCentral()
     }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.2.1'
+task wrapper(type: Wrapper) { gradleVersion = '2.2.1' }
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from tasks.javadoc.destinationDir
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+artifacts {
+    archives jar
+
+    archives javadocJar
+    archives sourcesJar
+}
+
+signing { sign configurations.archives }
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+
+            pom.project {
+                name 'COLA Tests'
+                packaging 'jar'
+                description 'COLA Tests is a plugin that automatically injects BDD stories into normal JUnit POJOs.'
+                url 'http://bmsantos.github.io/cola-maven-plugin/'
+
+                scm {
+                    url 'scm:git@github.com:bmsantos/cola-gradle-plugin.git'
+                    connection 'scm:git@github.com:bmsantos/cola-gradle-plugin.git'
+                    developerConnection 'scm:git@github.com:bmsantos/cola-gradle-plugin.git'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'bmsantos'
+                        name 'Bruno Santos'
+                        email 'bmrosantos@gmail.com'
+                    }
+                }
+            }
+        }
+    }
 }
