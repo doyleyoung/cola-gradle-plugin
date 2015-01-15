@@ -14,8 +14,8 @@ buildscript {
     }
 
     dependencies {
-        classpath group: 'com.github.bmsantos', name: 'cola-tests', version: '0.0.3-SNAPSHOT'
-        classpath group: 'com.github.bmsantos', name: 'cola-gradle-plugin', version: '0.0.3-SNAPSHOT'
+        classpath group: 'com.github.bmsantos', name: 'cola-tests', version: '0.0.3'
+        classpath group: 'com.github.bmsantos', name: 'cola-gradle-plugin', version: '0.0.3'
     }
 }
 
@@ -28,7 +28,7 @@ repositories {
 dependencies {
     compile 'commons-collections:commons-collections:3.2'
     testCompile 'org.slf4j:slf4j-simple:1.7.7'
-    testCompile 'com.github.bmsantos:cola-tests:0.0.3-SNAPSHOT'
+    testCompile 'com.github.bmsantos:cola-tests:0.0.3'
     testCompile 'junit:junit:4.+'
 }
 
@@ -60,4 +60,3 @@ uploadArchives {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.2.1'
 }
-
