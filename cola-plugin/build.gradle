@@ -28,13 +28,6 @@ processResources {
     ]
 }
 
-uploadArchives {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-}
-
 task wrapper(type: Wrapper) { gradleVersion = '2.2.1' }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
@@ -58,6 +51,7 @@ signing { sign configurations.archives }
 
 uploadArchives {
     repositories {
+        mavenLocal()
         mavenDeployer {
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
