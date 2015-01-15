@@ -11,11 +11,12 @@ jar {
 buildscript {
     repositories {
         mavenLocal()
+        mavenCentral()
     }
 
     dependencies {
-        classpath group: 'com.github.bmsantos', name: 'cola-tests', version: '0.0.3'
-        classpath group: 'com.github.bmsantos', name: 'cola-gradle-plugin', version: '0.0.3'
+        classpath 'com.github.bmsantos:cola-tests:0.0.3'
+        classpath 'com.github.bmsantos:cola-gradle-plugin:0.0.3'
     }
 }
 
