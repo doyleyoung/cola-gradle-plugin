@@ -1,3 +1,5 @@
+Questions? [![Join Chat](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/bmsantos/cola-maven-plugin)
+
 COLA Tests Gradle Plugin
 ========================
 
