@@ -25,7 +25,7 @@ class ColaGradlePluginTest {
         // Then
         assertThat project.plugins.hasPlugin(ColaGradlePlugin), is(true)
     }
-    
+
     @Test
     void shouldAddColaCompilerTaskToProject() {
         // Then
@@ -33,8 +33,20 @@ class ColaGradlePluginTest {
     }
 
     @Test
+    void shouldAddColaImcrementalCompilerTaskToProject() {
+        // Then
+        assertThat project.tasks.icolac, isA(ColaIncrementalCompileTask.class)
+    }
+
+    @Test
     void shouldSetTaskDescription() {
         // Then
         assertThat project.tasks.colac.description, is('Cola Tests Compiler Task')
+    }
+
+    @Test
+    void shouldSetIncrementalTaskDescription() {
+        // Then
+        assertThat project.tasks.icolac.description, is('Incremental Cola Tests Compiler Task')
     }
 }

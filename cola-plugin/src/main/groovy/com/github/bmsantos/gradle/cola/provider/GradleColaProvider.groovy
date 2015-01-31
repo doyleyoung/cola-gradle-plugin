@@ -76,7 +76,7 @@ class GradleColaProvider implements IColaProvider {
     private String[] resolveIncludes() {
         final def list = []
         final def props = [ "test", "test.single", "it.test" ]
-        props.each{ prop ->
+        props.each { prop ->
             def filter = getProperties().getProperty(prop)
             if (isSet(filter)) {
                 list.add(filter.endsWith(CLASS_EXT) ? filter : filter + CLASS_EXT)

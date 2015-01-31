@@ -1,4 +1,7 @@
 apply plugin: 'java'
+compileJava {
+    options.incremental = true
+}
 
 sourceCompatibility = 1.7
 version = '1.0'
@@ -37,16 +40,28 @@ apply plugin: 'cola'
 cola {
     ideBaseClass = 'org.gradle.cola.tests.TestBase'
     ideBaseClassTest = 'toBeRemoved'
-    targetDirectory = compileTestJava.destinationDir
     includes = ['org/gradle/cola/tests/**'] 
     excludes = ['something/else/**', 'and/some/CompiledFile.class']
 }
-colac.dependsOn testClasses
-colac.mustRunAfter testClasses
+icolac.inputDir = file(compileTestJava.destinationDir)
+icolac.destinationDir = file("${project.buildDir}/colac")
+icolac.dependsOn testClasses
+icolac.mustRunAfter testClasses
+
+task(fixTestClassPath) << {
+    // Fix test task classpath (this should be done automatically by the test task
+    // since the destinationDir is modified through configuration.
+    def cp = sourceSets.test.runtimeClasspath
+    def filteredCp = files(test.testClassesDir).plus(cp.filter() { f -> !f.equals(icolac.inputDir) })
+    sourceSets.test.runtimeClasspath = filteredCp
+}
+fixTestClassPath.mustRunAfter icolac
 
 test {
     useJUnit()
-    dependsOn colac
+    dependsOn icolac
+    dependsOn fixTestClassPath
+    testClassesDir = icolac.destinationDir
 }
 
 uploadArchives {
