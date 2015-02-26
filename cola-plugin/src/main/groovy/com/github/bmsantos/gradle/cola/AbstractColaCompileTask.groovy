@@ -28,7 +28,7 @@ abstract class AbstractColaCompileTask extends DefaultTask {
 
         def provider = new GradleColaProvider(destinationDir, classpathElements, project.cola.includes, project.cola.excludes, deltas)
 
-        def main = new ColaMain(project.cola.ideBaseClass, project.cola.ideBaseClassTest)
+        def main = new ColaMain(project.cola.ideBaseClass, project.cola.ideTestMethod)
         main.execute(provider)
     }
 }
