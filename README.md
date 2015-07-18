@@ -3,6 +3,8 @@ Questions? [![Join Chat](https://badges.gitter.im/JoinChat.svg)](https://gitter.
 COLA Tests Gradle Plugin
 ========================
 
+[![Join the chat at https://gitter.im/bmsantos/cola-gradle-plugin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/bmsantos/cola-gradle-plugin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 See COLA Test [Web Site](http://bmsantos.github.io/cola-maven-plugin/)
 
 ## Build cola-gradle-plugin
