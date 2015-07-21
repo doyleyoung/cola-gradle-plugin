@@ -3,7 +3,9 @@ Questions? [![Join Chat](https://badges.gitter.im/JoinChat.svg)](https://gitter.
 COLA Tests Gradle Plugin
 ========================
 
-See COLA Test [Web Site](http://bmsantos.github.io/cola-maven-plugin/)
+COLA Tests [Web Site](http://bmsantos.github.io/cola-maven-plugin/)
+
+COLA Tests [Wiki](https://github.com/bmsantos/cola-tests/wiki)
 
 ## Build cola-gradle-plugin
 
