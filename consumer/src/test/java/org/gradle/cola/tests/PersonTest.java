@@ -7,7 +7,7 @@ import com.github.bmsantos.core.cola.story.annotations.Given;
 import com.github.bmsantos.core.cola.story.annotations.Then;
 import com.github.bmsantos.core.cola.story.annotations.When;
 
-public class PersonTest extends TestBase {
+public class PersonTest extends BaseTest {
 
     @Feature
     private final String personFeature =
