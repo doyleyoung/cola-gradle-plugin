@@ -48,8 +48,6 @@ dependencies {
 
 apply plugin: 'cola'
 cola {
-    ideBaseClass = 'org.gradle.cola.tests.TestBase'
-    ideBaseClassTest = 'toBeRemoved'
     targetDirectory = compileTestJava.destinationDir
     includes = ['org/gradle/cola/tests/**'] 
     excludes = ['something/else/**', 'and/some/CompiledFile.class']
@@ -92,8 +90,6 @@ dependencies {
 
 apply plugin: 'cola'
 cola {
-    ideBaseClass = 'org.gradle.cola.tests.TestBase'
-    ideBaseClassTest = 'toBeRemoved'
     includes = ['org/gradle/cola/tests/**'] 
     excludes = ['something/else/**', 'and/some/CompiledFile.class']
 }
