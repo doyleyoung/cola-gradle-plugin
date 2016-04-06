@@ -34,7 +34,7 @@ processResources {
     ]
 }
 
-task wrapper(type: Wrapper) { gradleVersion = '2.2.1' }
+task wrapper(type: Wrapper) { gradleVersion = '2.12' }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'

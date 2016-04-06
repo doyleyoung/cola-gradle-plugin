@@ -1,5 +1,3 @@
-Questions? [![Join Chat](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/bmsantos/cola-maven-plugin)
-
 COLA Tests Gradle Plugin
 ========================
 
@@ -100,6 +98,7 @@ icolac.destinationDir = file("${project.buildDir}/colac")
 icolac.dependsOn testClasses
 icolac.mustRunAfter testClasses
 
+// Not required since Gradle 2.12
 task(fixTestClassPath) << {
     // Fix test task classpath (this should be done automatically by the test task
     // since the destinationDir is modified through configuration.
@@ -107,12 +106,12 @@ task(fixTestClassPath) << {
     def filteredCp = files(test.testClassesDir).plus(cp.filter() { f -> !f.equals(icolac.inputDir) })
     sourceSets.test.runtimeClasspath = filteredCp
 }
-fixTestClassPath.mustRunAfter icolac
+fixTestClassPath.mustRunAfter icolac // Not required since Gradle 2.12
 
 test {
     useJUnit()
     dependsOn icolac
-    dependsOn fixTestClassPath
+    dependsOn fixTestClassPath // Not required since Gradle 2.12
     testClassesDir = icolac.destinationDir
 }
 ```
